@@ -1,0 +1,169 @@
+---
+title: "Week 4"
+author: "Ally F."
+date: "Sept 28, 2026"
+abstract: "Short summary of document"
+format: html
+editor: visual
+---
+
+# First Level Header
+
+Emphasis: *italic* and **bold**
+
+## Second Level Header
+
+we doin it
+
+### Third Level Header
+
+- Item 1
+- Item 2
+  - Item 2a
+  - Item 2b
+
+1.  Item 1
+2.  Item 2
+3.  Item 3
+    1.  Item 3a
+    2.  Item 3b
+
+[this book](https://www.tellingstorieswithdata.com)
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed and executable code like this:
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(AER)
+
+data("DoctorVisits", package = "AER")
+
+DoctorVisits |>
+  ggplot(aes(x = illness)) +
+  geom_histogram(stat = "count")
+```
+
+*Figure 3.1: Number of illnesses in the past two weeks, based on the 1977-1978 Australian Health Survey*
+
+Blank line - on either side of R chunk to run proper. Most people did not visit a doctor in the past week.
+
+```{r}
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(AER)
+
+data("DoctorVisits", package = "AER")
+
+DoctorVisits |>
+  ggplot(aes(x = illness)) +
+  geom_histogram(stat = "count")
+```
+
+There were some people that visited a doctor once, and then...
+
+# Evaluation Options
+
+Various options available in chunks include these on new line by opening with chunk-specific comment delimiter "#\|" and then the option. Helpful options include:
+
+echo: this controls whether the code itself is included in the document
+
+For instance: #\| echo: false
+
+would mean the code will be ran and its output will show, but the code itself will not be included in the document.
+
+```{r}
+#| echo: false
+ 
+2*2
+
+#| eval: false
+
+2*2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed). And then the oposite for `eval: false` ???
+
+# Thank you, next to equations
+
+$$A = P\left(1+\frac{r}{n}\right)^{nt}$$
+
+$$y_i|\mu_i, \sigma \sim \mbox{Normal}(\mu_i, \sigma)$$
+
+$$\begin{aligned}
+y_i|\pi_i & \sim \mbox{Bern}(\pi_i) \\
+\mbox{logit}(\pi_i) & = \beta_0+ \alpha_{g[i]}^{\mbox{gender}} + \alpha_{a[i]}^{\mbox{age}} + \alpha_{s[i]}^{\mbox{state}} + \alpha_{e[i]}^{\mbox{edu}} \\
+\beta_0 & \sim \mbox{Normal}(0, 2.5)\\
+\alpha_{g}^{\mbox{gender}} & \sim \mbox{Normal}(0, 2.5)\mbox{ for }g=1, 2\\
+\alpha_{a}^{\mbox{age}} & \sim \mbox{Normal}\left(0, \sigma^2_{\mbox{age}}\right)\mbox{ for }a = 1, 2, \dots, A\\
+\alpha_{s}^{\mbox{state}} & \sim \mbox{Normal}\left(0, \sigma^2_{\mbox{state}}\right)\mbox{ for }s = 1, 2, \dots, S\\
+\alpha_{e}^{\mbox{edu}} & \sim \mbox{Normal}\left(0, \sigma^2_{\mbox{edu}}\right)\mbox{ for }e = 1, 2, \dots, E\\
+\sigma_{\mbox{gender}} & \sim \mbox{Exponential}(1)\\
+\sigma_{\mbox{state}} & \sim \mbox{Exponential}(1)\\
+\sigma_{\mbox{edu}} & \sim \mbox{Exponential}(1)
+\end{aligned}$$
+
+# Cross references
+
+```{r}
+#| label: fig-uniquename
+#| fig-cap: Number of illnesses in the past two weeks, based on the 1977--1978 Australian Health Survey
+#| warning: false
+
+data("DoctorVisits", package = "AER")
+
+DoctorVisits |>
+  ggplot(aes(x = illness)) +
+  geom_histogram(stat = "count") 
+```
+
+*Figure 3.3: Number of illnesses in the past two weeks, based on the 1977-1978 Australian Health Survey*
+
+
+```{r}
+#Add #| layout-ncol: 2 in an R chunk to have two graphs appear side by side (Figure 3.4a and 3.4b), where one uses minimal and one uses classic theme. 
+
+#| eval: true
+#| warning: false
+#| label: fig-doctorgraphsidebyside
+#| fig-cap: "Two variants of graphs"
+#| fig-subcap: ["Illnesses","Visits to the doctor"]
+#| layout-ncol: 2
+
+DoctorVisits |>
+  ggplot(aes(x = illness)) +
+  geom_histogram(stat = "count") +
+  theme_minimal()
+
+DoctorVisits |>
+  ggplot(aes(x = visits)) +
+  geom_histogram(stat = "count") +
+  theme_classic()
+
+#These both cross reference the same label [#| fig-doctorgraphsidebyside] in the R chunk with option added for subcaptions
+
+```
+
+```{r}
+#Similar approach to cross-reference tables!
+
+#| label: tbl-docvisittable
+#| tbl-cap: "Distribution of the number of doctor visits"
+
+library(knitr)
+
+DoctorVisits |>
+  count(visits) |>
+  kable()
+```
+
+$$
+Y = C + I + G + (X - M)
+$$ {#eq-gdpidentity}
+
