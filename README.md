@@ -41,8 +41,7 @@ sociRepository/
 Before running this project, make sure you have:
 
 - R and R studio downloaded
-- [Version requirement]
-- [Any package manager or dependency]
+- Version 4.6.1
 
 ### Installation
 
