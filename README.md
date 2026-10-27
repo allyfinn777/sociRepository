@@ -1,10 +1,10 @@
 # sociRepository
 
-A brief description of what this repository contains and its purpose.
+This repository is for practice. Cannot say it is any good.
 
 ## Overview
 
-This project is designed to help with [describe the main goal of the repository]. It may include code, notes, data, or scripts related to [topic or class/project].
+This project is designed to help with learning how to create reproducible datasets. It may include code, notes, data, or scripts related to SOCI502-Quant.
 
 ## Repository Purpose
 
@@ -40,7 +40,7 @@ sociRepository/
 
 Before running this project, make sure you have:
 
-- [Software or language requirement]
+- R and R studio downloaded
 - [Version requirement]
 - [Any package manager or dependency]
 
@@ -80,15 +80,15 @@ Contributions are welcome. Please follow these steps:
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) or specify another license if applicable.
+This project is not licensed.
 
 ## Contact
 
 For questions or collaboration, contact:
 
-- Name: [Your Name]
-- Email: [your.email@example.com]
-- GitHub: [@yourusername]
+- Name: Ally Finnerty
+- Email: allyfinn@student.ubc.ca
+- GitHub: @allyfinn777
 
 ## Notes
 
